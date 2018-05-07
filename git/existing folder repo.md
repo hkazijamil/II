@@ -16,4 +16,6 @@ fatal: refusing to merge unrelated histories
 
  generate gpg
 
- 
+
+
+
