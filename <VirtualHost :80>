@@ -1,6 +1,6 @@
 LoadModule wsgi_module     /usr/lib64/apache2/modules/mod_wsgi.so
 LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
-<VirtualHost 167.114.209.75:80>
+<VirtualHost :80>
   ServerName chemicalclub.net
   ServerAlias mail.chemicalclub.net www.chemicalclub.net
   DocumentRoot /home/chemical/public_html
