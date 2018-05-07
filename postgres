@@ -1,0 +1,20 @@
+sudo apt-get install postgresql
+sudo -i -u postgres
+createuser --interactive --pwprompt
+Enter name of role to add: your_username
+Enter passsword for new role:
+Enter it again:
+Shall the new role be a superuser?(y/n) n
+Shall the new role be allowed to create databases?(y/n) y
+Shall the new role be allowed to create more new roles?(y/n) n
+
+
+createdb your_project_name
+psql
+grant all privileges on database your_project_name to your_username;
+
+\q
+exit
+
+
+ALTER USER myuser WITH SUPERUSER;

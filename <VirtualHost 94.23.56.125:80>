@@ -1,0 +1,139 @@
+LoadModule wsgi_module     /usr/lib64/apache2/modules/mod_wsgi.so
+LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
+<VirtualHost 167.114.209.75:80>
+  ServerName chemicalclub.net
+  ServerAlias mail.chemicalclub.net www.chemicalclub.net
+  DocumentRoot /home/chemical/public_html
+  ServerAdmin webmaster@chemicalclub.net
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/chemicalclub.net combined
+  ErrorLog /home/chemical/www/error.log
+
+    #Demon process for multiple virtual hosts
+    WSGIDaemonProcess chemicalclub threads=5
+
+    #Pointing wsgi script to config file
+    WSGIScriptAlias / /home/chemical/www/wsgi-scripts/chemicalclub.wsgi
+    WSGIProcessGroup chemicalclub
+
+    #Your static files location
+    Alias /static/ "/home/chemical/www/chemicalclub/static/"
+    Alias /media/ "/home/chemical/www/chemicalclub/media/"
+    <Location "/media">
+        SetHandler None
+    </Location>
+    <LocationMatch "\.(jpg|gif|png|js|css)$">
+        SetHandler None
+    </LocationMatch>
+    <Directory /home/chemical/www/chemicalclub >
+        WSGIProcessGroup chemicalclub
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+    </Directory>
+    <Directory "/home/chemical/www/wsgi-scripts">
+       <Files "chemicalclub.wsgi">
+              Require all granted
+       </Files>
+  </Directory>
+   <Directory /home/chemical/www/static> 
+    Order deny,allow
+      Require all granted 
+  </Directory> 
+  <Directory /home/chemical/www/media>
+      Order deny,allow
+      Allow from all
+  </Directory>
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/chemicalclub.net-bytes_log "%{%s}t %I .\n%{%s}t %O ."
+    </IfModule>
+  </IfModule>
+  ## User chemical # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled chemical
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/chemical/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+
+
+      <Directory "/home/chemical">
+        AllowOverride All
+      </Directory>
+
+
+
+  <IfModule suphp_module>
+    suPHP_UserGroup chemical chemical
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup chemical chemical
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid chemical chemical
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID chemical chemical
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser chemical
+    PassengerGroup chemical
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/chemical/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/chemical/chemicalclub.net/*.conf"
+</VirtualHost>
+
+
+
+
+
+import os
+import sys
+import site
+
+
+site.addsitedir('/home/chemical/.local/lib/python3.6/site-packages')
+
+sys.path.append('/home/chemical/www/chemicalclub')
+sys.path.append('/home/chemical/www/chemicalclub/chemicalclub')
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'chemicalclub.settings'
+
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
