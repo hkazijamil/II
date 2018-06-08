@@ -16,5 +16,6 @@ grant all privileges on database your_project_name to your_username;
 \q
 exit
 
+postgres -D /usr/local/var/postgres
 
 ALTER USER myuser WITH SUPERUSER;
