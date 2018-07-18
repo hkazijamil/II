@@ -1,25 +1,29 @@
-sudo apt-get install python-pip
+sudo apt-get install python3
+sudo apt-get install python3-pip
 sudo pip install virtualenv
 sudo apt-get install python3-dev libpq-dev
 
 mkdir django
 
 
-sudo apt-get install libmariadbclient-dev
-export PATH=$PATH:/usr/local/mysql/bin/
+#sudo apt-get install libmariadbclient-dev
+#export PATH=$PATH:/usr/local/mysql/bin/
 
-virtualenv -p /usr/bin/python3.6 env
+run this outside of project:
+ virtualenv -p /usr/bin/python3 env_name
 
-source env/bin/activate
-source ../env/bin/activate
+source /path_to/env_name/bin/activate
 
-source>pip install Django==version_nubmer
-source>pip install psycopg2
-source>django-admin.py startproject project_name
-source>python manage.py startapp priyojon
-source>
-source>
-source>
+go to settings file and change DATABASES config
+
+#source>pip3 install Django==version_nubmer
+#source>pip3 install psycopg2
+#source>django-admin.py startproject project_name
+#source>python manage.py startapp app_name
+
+source>pip3 install --upgrade -r requirements.txt
+source>python3 manage.py makemigations
+source>python3 manage.py migrate
 
 
 pip3 install --upgrade -r requirements.txt
