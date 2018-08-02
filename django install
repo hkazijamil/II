@@ -22,7 +22,7 @@ go to settings file and change DATABASES config
 #source>python manage.py startapp app_name
 
 source>pip3 install --upgrade -r requirements.txt
-source>python3 manage.py makemigations
+source>python3 manage.py makemigrations
 source>python3 manage.py migrate
 
 
