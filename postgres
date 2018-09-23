@@ -16,6 +16,9 @@ psql
 grant all privileges on database your_project_name to your_username;
 
 \q
+$ psql <db name>
+> CREATE EXTENSION postgis;
+
 exit
 
 postgres -D /usr/local/var/postgres
