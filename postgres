@@ -1,6 +1,7 @@
 sudo apt-get install postgresql
  for django
 sudo apt-get install binutils libproj-dev gdal-bin
+sudo apt-get install postgis
 sudo -i -u postgres
 createuser --interactive --pwprompt
 Enter name of role to add: your_username
