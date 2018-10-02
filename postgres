@@ -25,3 +25,29 @@ exit
 postgres -D /usr/local/var/postgres
 
 ALTER USER myuser WITH SUPERUSER;
+
+
+CENTOS
+
+yum install postgresql10-server postgresql10
+
+service postgresql-10 start
+chkconfig postgresql-10 on
+
+su - postgres -c "psql"
+
+
+## CentOS/RHEL - 7
+rpm -Uvh https://yum.postgresql.org/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+
+## CentOS/RHEL - 6
+rpm -Uvh https://yum.postgresql.org/10/redhat/rhel-6-x86_64/pgdg-redhat10-10-2.noarch.rpm
+
+## Fedora - 28
+rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-28-x86_64/pgdg-fedora10-10-4.noarch.rpm
+
+## Fedora - 27
+rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-27-x86_64/pgdg-fedora10-10-4.noarch.rpm
+
+## Fedora - 26
+rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-26-x86_64/pgdg-fedora10-10-4.noarch.rpm
