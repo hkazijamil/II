@@ -1,61 +1,61 @@
 LoadModule wsgi_module     /usr/lib64/apache2/modules/mod_wsgi.so
 LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
 <VirtualHost :80>
-  ServerName chemicalclub.net
-  ServerAlias mail.chemicalclub.net www.chemicalclub.net
-  DocumentRoot /home/chemical/public_html
-  ServerAdmin webmaster@chemicalclub.net
+  ServerName domain_name.net
+  ServerAlias mail.domain_name.net www.domain_name.net
+  DocumentRoot /home/domain_sort_name/public_html
+  ServerAdmin webmaster@domain_name.net
   UseCanonicalName Off
-  CustomLog /etc/apache2/logs/domlogs/chemicalclub.net combined
-  ErrorLog /home/chemical/www/error.log
+  CustomLog /etc/apache2/logs/domlogs/domain_name.net combined
+  ErrorLog /home/domain_sort_name/www/error.log
 
     #Demon process for multiple virtual hosts
-    WSGIDaemonProcess chemicalclub threads=5
+    WSGIDaemonProcess domain_name threads=5
 
     #Pointing wsgi script to config file
-    WSGIScriptAlias / /home/chemical/www/wsgi-scripts/chemicalclub.wsgi
-    WSGIProcessGroup chemicalclub
+    WSGIScriptAlias / /home/domain_sort_name/www/wsgi-scripts/domain_name.wsgi
+    WSGIProcessGroup domain_name
 
     #Your static files location
-    Alias /static/ "/home/chemical/www/chemicalclub/static/"
-    Alias /media/ "/home/chemical/www/chemicalclub/media/"
+    Alias /static/ "/home/domain_sort_name/www/domain_name/static/"
+    Alias /media/ "/home/domain_sort_name/www/domain_name/media/"
     <Location "/media">
         SetHandler None
     </Location>
     <LocationMatch "\.(jpg|gif|png|js|css)$">
         SetHandler None
     </LocationMatch>
-    <Directory /home/chemical/www/chemicalclub >
-        WSGIProcessGroup chemicalclub
+    <Directory /home/domain_sort_name/www/domain_name >
+        WSGIProcessGroup domain_name
         WSGIApplicationGroup %{GLOBAL}
         Order deny,allow
         Allow from all
     </Directory>
-    <Directory "/home/chemical/www/wsgi-scripts">
-       <Files "chemicalclub.wsgi">
+    <Directory "/home/domain_sort_name/www/wsgi-scripts">
+       <Files "domain_name.wsgi">
               Require all granted
        </Files>
   </Directory>
-   <Directory /home/chemical/www/static> 
+   <Directory /home/domain_sort_name/www/static> 
     Order deny,allow
       Require all granted 
   </Directory> 
-  <Directory /home/chemical/www/media>
+  <Directory /home/domain_sort_name/www/media>
       Order deny,allow
       Allow from all
   </Directory>
   <IfModule log_config_module>
     <IfModule logio_module>
-      CustomLog /etc/apache2/logs/domlogs/chemicalclub.net-bytes_log "%{%s}t %I .\n%{%s}t %O ."
+      CustomLog /etc/apache2/logs/domlogs/domain_name.net-bytes_log "%{%s}t %I .\n%{%s}t %O ."
     </IfModule>
   </IfModule>
-  ## User chemical # Needed for Cpanel::ApacheConf
+  ## User domain_sort_name # Needed for Cpanel::ApacheConf
   <IfModule userdir_module>
     <IfModule !mpm_itk.c>
       <IfModule !ruid2_module>
         <IfModule !mod_passenger.c>
           UserDir disabled
-          UserDir enabled chemical
+          UserDir enabled domain_sort_name
         </IfModule>
       </IfModule>
     </IfModule>
@@ -66,43 +66,43 @@ LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
   # the user's .htaccess file.  For more information, please read:
   #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
   <IfModule include_module>
-    <Directory "/home/chemical/public_html">
+    <Directory "/home/domain_sort_name/public_html">
       SSILegacyExprParser On
     </Directory>
   </IfModule>
 
 
 
-      <Directory "/home/chemical">
+      <Directory "/home/domain_sort_name">
         AllowOverride All
       </Directory>
 
 
 
   <IfModule suphp_module>
-    suPHP_UserGroup chemical chemical
+    suPHP_UserGroup domain_sort_name domain_sort_name
   </IfModule>
   <IfModule suexec_module>
     <IfModule !mod_ruid2.c>
-      SuexecUserGroup chemical chemical
+      SuexecUserGroup domain_sort_name domain_sort_name
     </IfModule>
   </IfModule>
   <IfModule ruid2_module>
     RMode config
-    RUidGid chemical chemical
+    RUidGid domain_sort_name domain_sort_name
   </IfModule>
   <IfModule mpm_itk.c>
     # For more information on MPM ITK, please read:
     #   http://mpm-itk.sesse.net/
-    AssignUserID chemical chemical
+    AssignUserID domain_sort_name domain_sort_name
   </IfModule>
   <IfModule mod_passenger.c>
-    PassengerUser chemical
-    PassengerGroup chemical
+    PassengerUser domain_sort_name
+    PassengerGroup domain_sort_name
   </IfModule>
 
   <IfModule alias_module>
-    ScriptAlias /cgi-bin/ /home/chemical/public_html/cgi-bin/
+    ScriptAlias /cgi-bin/ /home/domain_sort_name/public_html/cgi-bin/
   </IfModule>
 
 
@@ -114,7 +114,7 @@ LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
 
 
   # To customize this VirtualHost use an include file at the following location
-  # Include "/etc/apache2/conf.d/userdata/std/2_4/chemical/chemicalclub.net/*.conf"
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/domain_sort_name/domain_name.net/*.conf"
 </VirtualHost>
 
 
@@ -126,12 +126,12 @@ import sys
 import site
 
 
-site.addsitedir('/home/chemical/.local/lib/python3.6/site-packages')
+site.addsitedir('/home/domain_sort_name/.local/lib/python3.6/site-packages')
 
-sys.path.append('/home/chemical/www/chemicalclub')
-sys.path.append('/home/chemical/www/chemicalclub/chemicalclub')
+sys.path.append('/home/domain_sort_name/www/domain_name')
+sys.path.append('/home/domain_sort_name/www/domain_name/domain_name')
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'chemicalclub.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'domain_name.settings'
 
 
 from django.core.wsgi import get_wsgi_application

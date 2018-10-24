@@ -1,0 +1,24 @@
+.idea/django.iml
+.idea/inspectionProfiles
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+bcbd/local_settings.py
+**/local_settings.py
+static/
+!apps/common/static
+.idea/*
+*.pyc
+*.pyo
+*.mo
+*~
+**/migrations/**
+__ pycache __
+*/__ pycache __
+*/*/__ pycache __
+
+*/.DS_Store
+!**/migrations
+!**/migrations/__init__.py
+uploads/**
+log/**

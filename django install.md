@@ -38,10 +38,10 @@ tar xvzf PACKAGENAME.tar.gz.
 
 DATABASES = {
     'default': {
-        'NAME': 'wwwchemi_django',
+        'NAME': 'your_db_name',
         'ENGINE': 'django.db.backends.mysql',
-        'USER': 'wwwchemi_django',
-        'PASSWORD': 'zqR7uTB.[V5H',
+        'USER': 'your_db_username',
+        'PASSWORD': 'your_db_pass',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

@@ -2,18 +2,18 @@ sudo apt-get install libapache2-mod-wsgi
 sudo apt-get install libapache2-mod-wsgi-py3
 sudo a2enmod wsgi
 
-chmod u+x chemicalclub.wsgi
+chmod u+x domain_name.wsgi
 
 
 LoadModule wsgi_module     /usr/lib/apache2/modules/mod_wsgi.so
 LoadModule alias_module    /usr/lib/apache2/modules/mod_alias.so
 
 <VirtualHost *:80>
- ServerName local.chemical.com
- DocumentRoot /var/www/html/chemicalclub/
- WSGIScriptAlias / /var/www/html/wsgi_scrips/chemical.wsgi
+ ServerName local.domain_sort_name.com
+ DocumentRoot /var/www/html/domain_name/
+ WSGIScriptAlias / /var/www/html/wsgi_scrips/domain_sort_name.wsgi
 
- <directory /var/www/html/chemicalclub/>
+ <directory /var/www/html/domain_name/>
    AllowOverride all
    Require all granted
    Options FollowSymlinks
@@ -28,35 +28,35 @@ LoadModule alias_module    /usr/lib/apache2/modules/mod_alias.so
 
 <VirtualHost *:80>
     #My site Name
-    ServerName local.chemical.com
+    ServerName local.domain_sort_name.com
 
-    DocumentRoot /var/www/html/chemicalclub
+    DocumentRoot /var/www/html/domain_name
 	   ErrorLog /var/www/html/error.log
 
     #Demon process for multiple virtual hosts
-    WSGIDaemonProcess chemicalclub threads=5
+    WSGIDaemonProcess domain_name threads=5
 
     #Pointing wsgi script to config file
-    WSGIScriptAlias / /var/www/html/wsgi_scripts/chemicalclub.wsgi
-    WSGIProcessGroup chemicalclub
+    WSGIScriptAlias / /var/www/html/wsgi_scripts/domain_name.wsgi
+    WSGIProcessGroup domain_name
 
     #Your static files location
-    Alias /static/ "/var/www/html/chemicalclub/static/"
-    Alias /media/ "/var/www/html/chemicalclub/media/"
+    Alias /static/ "/var/www/html/domain_name/static/"
+    Alias /media/ "/var/www/html/domain_name/media/"
     <Location "/media">
         SetHandler None
     </Location>
     <LocationMatch "\.(jpg|gif|png|js|css)$">
         SetHandler None
     </LocationMatch>
-    <Directory /var/www/html/chemicalclub >
-        WSGIProcessGroup chemicalclub
+    <Directory /var/www/html/domain_name >
+        WSGIProcessGroup domain_name
         WSGIApplicationGroup %{GLOBAL}
         Order deny,allow
         Allow from all
     </Directory>
     <Directory "/var/www/html/wsgi_scripts">
-       <Files "chemicalclub.wsgi">
+       <Files "domain_name.wsgi">
               Require all granted
        </Files>
 	</Directory>
