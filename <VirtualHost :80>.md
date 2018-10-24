@@ -1,3 +1,4 @@
+```
 LoadModule wsgi_module     /usr/lib64/apache2/modules/mod_wsgi.so
 LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
 <VirtualHost :80>
@@ -116,11 +117,11 @@ LoadModule alias_module    /usr/lib64/apache2/modules/mod_alias.so
   # To customize this VirtualHost use an include file at the following location
   # Include "/etc/apache2/conf.d/userdata/std/2_4/domain_sort_name/domain_name.net/*.conf"
 </VirtualHost>
+```
 
 
 
-
-
+```
 import os
 import sys
 import site
@@ -137,3 +138,4 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'domain_name.settings'
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
+```

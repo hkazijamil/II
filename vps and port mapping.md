@@ -10,6 +10,7 @@ TTL: Automatic
 
 https://serverfault.com/questions/695686/redirect-subdomains-to-services-on-different-ports-of-same-server
 
+```
 <VirtualHost *:80>
         ServerName service1.mydomain.com
         ProxyPreserveHost On
@@ -23,8 +24,10 @@ https://serverfault.com/questions/695686/redirect-subdomains-to-services-on-diff
         ProxyPass / http://service2.mydomain.com:8081/
         ProxyPassReverse / http://service2.mydomain.com:8081/
 </VirtualHost>
-
+```
 important
+```
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo a2enmod rewrite
+```

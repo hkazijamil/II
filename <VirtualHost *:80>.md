@@ -1,10 +1,12 @@
+```
 sudo apt-get install libapache2-mod-wsgi
 sudo apt-get install libapache2-mod-wsgi-py3
 sudo a2enmod wsgi
-
+```
+```
 chmod u+x domain_name.wsgi
-
-
+```
+```
 LoadModule wsgi_module     /usr/lib/apache2/modules/mod_wsgi.so
 LoadModule alias_module    /usr/lib/apache2/modules/mod_alias.so
 
@@ -92,4 +94,4 @@ LoadModule alias_module    /usr/lib/apache2/modules/mod_alias.so
 	</Directory>
 </VirtualHost>
 
-
+```
