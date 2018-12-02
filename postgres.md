@@ -29,6 +29,11 @@ postgres -D /usr/local/var/postgres
 
 ALTER USER myuser WITH SUPERUSER;
 
+MAC RESTART
+
+```
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log restart
+```
 
 CENTOS
 ```
