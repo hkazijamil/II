@@ -1,6 +1,6 @@
  Reactjs
  
-'''
+```
 FROM node:8.11.2 as build
 
 RUN mkdir /usr/src/app
@@ -19,7 +19,7 @@ COPY --from=build /usr/src/app/build /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-'''
+```
 
 
 
