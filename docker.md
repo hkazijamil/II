@@ -34,6 +34,11 @@ $ docker tag <old_name> <new_name>
 
 $ docker rmi <old_name>
 
+ps axf | grep docker | grep -v grep | awk '{print "kill -9 " $1}' | sudo sh 
+
+sudo systemctl start docker
+
+
 ## Gitlab
 
 docker login registry.example.com -u <username> -p <token>
