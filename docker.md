@@ -38,6 +38,15 @@ ps axf | grep docker | grep -v grep | awk '{print "kill -9 " $1}' | sudo sh
 
 sudo systemctl start docker
 
+ sudo gitlab-runner register -n \
+   --url https://gitlab.com/ \
+   --registration-token REGISTRATION_TOKEN \
+   --executor docker \
+   --description "identity tag" \
+   --docker-image "docker:stable" \
+   --docker-privileged \
+   --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+
 
 ## Gitlab
 
