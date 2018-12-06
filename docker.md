@@ -34,10 +34,23 @@ $ docker tag <old_name> <new_name>
 
 $ docker rmi <old_name>
 
+If docker stuck
+
+```
 ps axf | grep docker | grep -v grep | awk '{print "kill -9 " $1}' | sudo sh 
 
 sudo systemctl start docker
+```
 
+
+## Gitlab
+```
+docker login registry.example.com -u <username> -p <token>
+```
+
+Authorized register
+
+```
  sudo gitlab-runner register -n \
    --url https://gitlab.com/ \
    --registration-token REGISTRATION_TOKEN \
@@ -46,12 +59,7 @@ sudo systemctl start docker
    --docker-image "docker:stable" \
    --docker-privileged \
    --docker-volumes /var/run/docker.sock:/var/run/docker.sock
-
-
-## Gitlab
-
-docker login registry.example.com -u <username> -p <token>
- 
+```
  
  ## Docker Manage
 ```
