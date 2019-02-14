@@ -23,4 +23,4 @@ kubeadm token create
  ## JOIN cluster
   Install kubernetes and join master as slave
  
- 
+ kubeadm join (add) --node-name=<HOST_NAME>
