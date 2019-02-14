@@ -19,7 +19,7 @@ systemctl restart kubelet
 ```
  kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
 ```
-
+```
 kubeadm reset
 
 kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=178.128.52.148
@@ -41,7 +41,7 @@ kubectl -n kube-system edit service kubernetes-dashboard
 kubectl -n kube-system get service kubernetes-dashboard
 
 kubeadm token create
-
+```
  
  ## JOIN cluster
 ```
