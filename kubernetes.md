@@ -9,8 +9,15 @@ EOF
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
+nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+```
+and paste this
 
 ```
+Environment=”cgroup-driver=systemd/cgroup-driver=cgroupfs”
+```
+
+
 ```
 systemctl daemon-reload
 systemctl restart kubelet
