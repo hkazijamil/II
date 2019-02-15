@@ -26,6 +26,7 @@ kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=178
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+export KUBECONFIG=/etc/kubernetes/admin.conf
 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
 
@@ -51,3 +52,5 @@ kubeadm token create
   Install kubernetes and join master as slave
  
  kubeadm join (add) --node-name=<HOST_NAME>
+ 
+ systemctl restart systemd-logind.service
