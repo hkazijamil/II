@@ -78,7 +78,8 @@ kubeadm token create
 ```
  
   Install kubernetes and join master as slave
- 
+
  kubeadm join (add) --node-name=<HOST_NAME>
- 
+ ```
  systemctl restart systemd-logind.service
+ ```
