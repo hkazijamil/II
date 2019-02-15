@@ -17,7 +17,7 @@ systemctl restart kubelet
 ```
 
 ```
- kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+ 
 ```
 ```
 kubeadm reset
@@ -27,6 +27,9 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=/etc/kubernetes/admin.conf
+
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
 
@@ -40,6 +43,31 @@ kubectl get svc --namespace kube-system
 
 kubectl -n kube-system edit service kubernetes-dashboard
 kubectl -n kube-system get service kubernetes-dashboard
+
+kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
+### For gitlab
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gitlab
+  namespace: default
+```
+
+```
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: gitlab-cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: gitlab
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
 
 kubeadm token create
 ```
