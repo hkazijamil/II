@@ -38,7 +38,10 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+kubectl create -f https://raw.githubusercontent.com/hkazijamil/II/master/kubernetes-dashboard.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/hkazijamil/II/master/kubernetes-dashboard.yaml
+
 
 kubectl create serviceaccount dashboard -n default
 kubectl create serviceaccount calico-node -n kube-system
@@ -135,7 +138,7 @@ kubectl patch serviceaccount <insert-serviceaccount-name-here> -n <insert-namesp
 #### NB: secrect need to be created inside namespace to patch with service accout of namepsace
 
 ### PersistentVolume
-
+```
 kind: PersistentVolume
 apiVersion: v1
 metadata:
@@ -153,8 +156,9 @@ spec:
     - ReadWriteMany
   hostPath:
     path: "/mnt/data"
-
+```
 ### PersistentVolumeClaim
+```
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -171,5 +175,9 @@ spec:
     requests:
       storage: 3Gi
 
+```
 
-
+### Change replica
+```
+kubectl scale deployment kubernetes-dashboard -n kube-system --replicas=0; kubectl scale deployment kubernetes-dashboard -n kube-system --replicas=1;
+```
