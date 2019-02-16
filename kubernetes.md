@@ -134,6 +134,42 @@ kubectl patch serviceaccount <insert-serviceaccount-name-here> -n <insert-namesp
 ```
 #### NB: secrect need to be created inside namespace to patch with service accout of namepsace
 
+### PersistentVolume
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: api-data-production
+  namespace: circleliner
+  labels:
+    type: local
+    for_app: circleliner-vol
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+
+### PersistentVolumeClaim
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: api-data-production
+  namespace: circleliner
+spec:
+  selector:
+    matchLabels:
+      for_app: circleliner-vol
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
 
 
 
