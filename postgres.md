@@ -1,7 +1,7 @@
 ```
 sudo apt-get install postgresql
 ```
- for django
+### for django
 ```
 sudo apt-get install binutils libproj-dev gdal-bin
 sudo apt-get install postgis
@@ -29,13 +29,13 @@ postgres -D /usr/local/var/postgres
 
 ALTER USER myuser WITH SUPERUSER;
 
-MAC RESTART
+### MAC RESTART
 
 ```
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log restart
 ```
 
-CENTOS
+## CENTOS
 ```
 yum install postgresql10-server postgresql10
 
@@ -65,3 +65,18 @@ rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-27-x86_64/pgdg-fedora10-10-
 ```
 rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-26-x86_64/pgdg-fedora10-10-4.noarch.rpm
 ```
+
+## Change port
+
+nano /etc/postgresql/10/main/postgresql.conf
+
+port = 5436 => <DESIRE_PORT>
+
+#### Remote enable
+
+listen_addresses='*'
+
+nano /etc/postgresql/10/main/pg_hba.conf
+host all all all md5
+
+
