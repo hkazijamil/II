@@ -1,3 +1,5 @@
+### Erlang and mongoosim
+
 ```
 wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
 sudo dpkg -i erlang-solutions_1.0_all.deb
@@ -30,6 +32,10 @@ sudo apt-get update
 sudo apt-get install mysql-server
 mysql_secure_installation
 
+sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu trusty universe'
+
+apt install mysql-client-5.6
+
 ```
 
 
@@ -52,3 +58,7 @@ sudo /etc/init.d/mysql restart
 
 
 ```
+
+# PGSQL
+
+https://raw.githubusercontent.com/processone/ejabberd/master/sql/pg.sql
