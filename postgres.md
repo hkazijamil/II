@@ -67,16 +67,16 @@ rpm -Uvh https://yum.postgresql.org/10/fedora/fedora-26-x86_64/pgdg-fedora10-10-
 ```
 
 ## Change port
-
+```
 nano /etc/postgresql/10/main/postgresql.conf
 
 port = 5436 => <DESIRE_PORT>
-
+```
 #### Remote enable
-
+```
 listen_addresses='*'
 
 nano /etc/postgresql/10/main/pg_hba.conf
 host all all all md5
-
+```
 
