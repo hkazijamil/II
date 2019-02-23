@@ -60,9 +60,9 @@ sudo /etc/init.d/mysql restart
 ```
 
 # PGSQL
-
+```
 psql -h localhost -U mongooseim -c "CREATE DATABASE mongooseim;"
 wget https://raw.githubusercontent.com/processone/ejabberd/master/sql/pg.sql
 psql -h localhost -U mongooseim -q -d mongooseim -f pg.sql
-
+```
 
