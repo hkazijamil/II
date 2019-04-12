@@ -142,6 +142,10 @@ kubectl get secrets regcred
 kubectl get secret regcred --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
 
 kubectl patch serviceaccount <insert-serviceaccount-name-here> -n <insert-namespace-name-here> -p '{"imagePullSecrets": [{"name": "regcred"}]}'
+
+or 
+
+kubectl create secret docker-registry regcred -n default --docker-server=registry.gitlab.com --docker-username=<docker-username> --docker-password=<docker-password> --docker-email=<docker-email>
 ```
 #### NB: secrect need to be created inside namespace to patch with service accout of namepsace
 
