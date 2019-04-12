@@ -155,17 +155,12 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: api-data-production
-  namespace: circleliner
-  labels:
-    type: local
-    for_app: circleliner-vol
+  namespace: default
 spec:
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: "/mnt/data"
 ```
