@@ -54,6 +54,14 @@ kubectl cluster-info
 kubectl get svc --namespace kube-system
 
 kubectl -n kube-system edit service kubernetes-dashboard
+```
+ Change type: ClusterIP to type: NodePort and save file. And Update /etc/nginx/sites-available/kubernetes.dashboard.conf with port and do 
+ 
+```
+ sudo systemctl restart nginx
+```
+
+```
 kubectl -n kube-system get service kubernetes-dashboard
 
 kubectl get pods -o wide --all-namespaces
