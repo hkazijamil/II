@@ -146,6 +146,11 @@ kubectl patch serviceaccount <insert-serviceaccount-name-here> -n <insert-namesp
 or 
 
 kubectl create secret docker-registry regcred -n default --docker-server=registry.gitlab.com --docker-username=<docker-username> --docker-password=<docker-password> --docker-email=<docker-email>
+
+after kompose up
+
+kubectl set serviceaccount deployment <insert-deployment-name> <insert-serviceaccount-name-here> --namespace <insert-namespace-name-here>
+
 ```
 #### NB: secrect need to be created inside namespace to patch with service accout of namepsace
 
