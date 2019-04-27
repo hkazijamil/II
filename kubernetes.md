@@ -33,6 +33,8 @@ kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=178
 mkdir -p $HOME/.kube
 sudo cp -rf /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+if you are the root user
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
