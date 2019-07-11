@@ -35,6 +35,12 @@ ALTER USER myuser WITH SUPERUSER;
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log restart
 ```
 
+auto start on mac
+
+```
+brew services start postgresql
+```
+
 ## CENTOS
 ```
 yum install postgresql10-server postgresql10
