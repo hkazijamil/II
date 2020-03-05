@@ -17,7 +17,7 @@ Shall the new role be allowed to create more new roles?(y/n) n
 
 createdb <YOUR_DATABASE_NAME>
 psql <YOUR_DATABASE_NAME>
-<YOUR_DATABASE_NAME>=# grant all privileges on database your_project_name to your_username;
+<YOUR_DATABASE_NAME>=# grant all privileges on database <YOUR_DATABASE_NAME> to <YOUR_USERNAME>;
 
 \q
 $ psql <db name>
