@@ -7,7 +7,7 @@ sudo apt-get install binutils libproj-dev gdal-bin
 sudo apt-get install postgis
 sudo -i -u postgres
 createuser --interactive --pwprompt
-Enter name of role to add: your_username
+Enter name of role to add: <YOUR_USERNAME>
 Enter passsword for new role:
 Enter it again:
 Shall the new role be a superuser?(y/n) n
@@ -15,9 +15,9 @@ Shall the new role be allowed to create databases?(y/n) y
 Shall the new role be allowed to create more new roles?(y/n) n
 
 
-createdb your_project_name
-psql
-grant all privileges on database your_project_name to your_username;
+createdb <YOUR_DATABASE_NAME>
+psql <YOUR_DATABASE_NAME>
+<YOUR_DATABASE_NAME>=# grant all privileges on database your_project_name to your_username;
 
 \q
 $ psql <db name>
